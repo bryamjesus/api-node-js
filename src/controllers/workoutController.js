@@ -45,8 +45,6 @@ const createNewWorkout = (req, res) => {
   res.status(201).send({ status: "Creado", data: createdWorkout });
 }
 
-
-
 const updateOneWorkout = (req, res) => {
   const {
     body,
@@ -62,9 +60,17 @@ const updateOneWorkout = (req, res) => {
 }
 
 const deleteOneWorkout = (req, res) => {
-  workoutService.deleteOneWorkout(req.params.workoutId);
-  res.send(`Delete workouts ${req.params.workoutId}`);
-}
+  const {
+    params: { workoutId },
+  } = req;
+
+  if (!workoutId) {
+    return;
+  }
+
+  workoutService.deleteOneWorkout(workoutId);
+  res.status(204).send({ status: "Borrado" });
+};
 
 module.exports = {
   getAllWorkouts,

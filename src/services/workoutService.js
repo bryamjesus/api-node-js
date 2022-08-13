@@ -20,6 +20,7 @@ const createNewWorkout = (newWorkout) => {
   };
 
   // console.log("workoutToInsert", workoutToInsert)
+
   const createdWorkout = Workout.createNewWorkout(workoutToInsert);
   return createdWorkout;
 }
@@ -29,7 +30,9 @@ const updateOneWorkout = (workoutId, changes) => {
   return updateWorkout;
 }
 
-const deleteOneWorkout = () => { return; }
+const deleteOneWorkout = (workoutId) => {
+  Workout.deleteOneWorkout(workoutId);
+};
 
 module.exports = {
   getAllWorkouts,
