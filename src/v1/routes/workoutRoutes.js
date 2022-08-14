@@ -4,9 +4,9 @@ const recordController = require("../../controllers/recordController")
 // const authorize = require("../../middlewares/authorize");
 
 const express = require("express")
-const apicache = require("apicache")
+// const apicache = require("apicache")
 const router = express.Router()
-const cache = apicache.middleware;
+// const cache = apicache.middleware;
 
 /**
  * @openapi
@@ -53,8 +53,8 @@ const cache = apicache.middleware;
  *                       example: "Some error message"
  */
 router
-  .get("/", cache("2 minutes"), workoutController.getAllWorkouts)
-
+  // .get("/", cache("2 minutes"), workoutController.getAllWorkouts)
+  .get("/", workoutController.getAllWorkouts)
   .get("/:workoutId", workoutController.getOneWorkout)
 
   .get("/:workoutId/records", recordController.getRecordForWorkout)
